@@ -12,7 +12,7 @@ This is a secondary analysis of a publicly available dataset:
 
 > Song TA, Zhang Y, Zhou Z, Dutta J. A multi-night instantaneous heart rate and accelerometry dataset with EEG sleep stage labels (version 1.0.1). PhysioNet. https://doi.org/10.13026/rees-1092
 
-To reproduce the analysis, download the dataset from PhysioNet and place the extracted subject-night folders under `./data/` (or point `BASE_DIR` in `src/build_full_dataset.py` to your local copy).
+To reproduce the analysis, download the dataset from PhysioNet and place the extracted subject-night folders under `./data/` (or point `BASE_DIR` in `build_full_dataset.py` to your local copy).
 
 ## Environment
 
@@ -24,7 +24,7 @@ Developed and run with Python 3.13.15. See `requirements.txt` for exact package 
 
 ## Pipeline
 
-Scripts are run in the following order. Each step reads the output of the previous one from `./outputs/`.
+All scripts are in the repository root (no `src/` subfolder). Run them in the following order; each step reads the output of the previous one from `./outputs/`.
 
 1. **`build_full_dataset.py`** — Loads raw subject-night folders (via `data_loader.py`, `feature_extraction.py`), applies the duration and completeness quality filters, removes epochs with an unknown reference label, consolidates the five AASM stages into four classes, and writes `./data/full_feature_table.parquet`.
    *(Methods: Dataset and Participants; Reference Labels; Data Quality Filtering; Feature Extraction and Preprocessing.)*
